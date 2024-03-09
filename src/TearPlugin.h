@@ -28,11 +28,11 @@
 #include <sofa/helper/RandomGenerator.h>
 #include <sofa/defaulttype/VecTypes.h>
 #include <sofa/core/topology/BaseMeshTopology.h>
-#include <SofaMiscFem/TriangularFEMForceField.h>
+#include <sofa/component/solidmechanics/fem/elastic/TriangularFEMForceField.h>
 #include <sofa/simulation/AnimateBeginEvent.h>
 #include <sofa/simulation/AnimateEndEvent.h>
-#include <SofaBaseTopology/TriangleSetTopologyModifier.h>
-#include <SofaBaseTopology/TriangleSetGeometryAlgorithms.h>
+#include <sofa/component/topology/container/dynamic/TriangleSetTopologyModifier.h>
+#include <sofa/component/topology/container/dynamic/TriangleSetGeometryAlgorithms.h>
 // #include <SofaBaseTopology/TriangleSetTopologyAlgorithms.h>
 #include <sofa/helper/ColorMap.h>
 #include <sofa/type/RGBAColor.h>
@@ -56,7 +56,7 @@ namespace sofa::component::forcefield
         typedef core::objectmodel::Data<VecCoord> DataVecCoord;
         typedef core::objectmodel::Data<VecDeriv> DataVecDeriv;
 
-        typedef sofa::component::forcefield::TriangularFEMForceField<defaulttype::Vec3Types>::TriangleInformation triangleInfo;
+        typedef sofa::component::solidmechanics::fem::elastic::TriangularFEMForceField<defaulttype::Vec3Types>::TriangleInformation triangleInfo;
         typedef core::topology::BaseMeshTopology::TriangleID TriangleID;
         typedef core::topology::BaseMeshTopology::EdgeID EdgeID;
         typedef core::topology::BaseMeshTopology::PointID PointID;
@@ -80,9 +80,9 @@ namespace sofa::component::forcefield
         TearPlugin();
         /// Pointer to the current topology
         sofa::core::topology::BaseMeshTopology *m_topology;
-        sofa::component::forcefield::TriangularFEMForceField<defaulttype::Vec3Types> *triangleFF;
-        sofa::component::topology::TriangleSetTopologyModifier *triangleMod;
-        sofa::component::topology::TriangleSetGeometryAlgorithms<defaulttype::Vec3Types> *triangleGeo;
+        sofa::component::solidmechanics::fem::elastic::TriangularFEMForceField<defaulttype::Vec3Types> *triangleFF;
+        sofa::component::topology::container::dynamic::TriangleSetTopologyModifier *triangleMod;
+        sofa::component::topology::container::dynamic::TriangleSetGeometryAlgorithms<defaulttype::Vec3Types> *triangleGeo;
 
         core::topology::BaseMeshTopology::TrianglesAroundVertex trianglesAroundPointA;
         core::topology::BaseMeshTopology::TrianglesAroundVertex trianglesAroundPointB;
